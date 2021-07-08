@@ -1,0 +1,20 @@
+{
+  "notes": [
+    {
+      "title": "abc",
+      "details": "dsfsdfdgfrddrgg gfgdfgdfgdfgdfg gfgrguhre sanith sshetty havanje angadibettu havanje post and village",
+      "category": "money",
+      "id": 1
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "firstname": "Sanith",
+      "lastname": "Shetty",
+      "email": "sanithshetty143@gmail.com",
+      "password": "123456",
+      "mobile": "9632389738"
+    }
+  ]
+}
