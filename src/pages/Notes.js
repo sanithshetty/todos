@@ -1,29 +1,27 @@
 import React from 'react'
-import { Typography, Container, Button, CircularProgress } from '@material-ui/core'
-import SendTwoToneIcon from '@material-ui/icons/SendTwoTone';
+import { Typography, Container, CircularProgress } from '@material-ui/core'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import NoteCard from '../components/NoteCard';
 import Masonry from 'react-masonry-css';
-import { useHistory } from 'react-router';
 
 export default function Notes() {
   const [notes, setNotes] = useState(undefined)
-  const history = useHistory()
+  const [ondelete, setondelete] = useState(false)
 
   useEffect(() =>{
-    fetch('http://localhost:8000/notes')
+    fetch('https://firstproject-d29fe-default-rtdb.firebaseio.com/notes.json')
     .then(res => res.json())
-    .then(data => setNotes(data))
-  },[])
+    .then(data => { console.log(data)
+      setNotes(data)
+   })
+  },[ondelete])
 
   const handleDelete = async (id) =>{
-    await fetch('http://localhost:8000/notes/'+ id, {
+    await fetch(`https://firstproject-d29fe-default-rtdb.firebaseio.com/notes/${id}.json`, {
       method: 'DELETE'
     })
-
-    const newNotes = notes.filter(note => note.id != id)
-    setNotes(newNotes)
+    setondelete(!ondelete)
   }
 
   const breakpoints = {
@@ -52,9 +50,9 @@ export default function Notes() {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        { notes.map(note =>(
-            <div key={note.id}>
-              <NoteCard note={note} handleDelete={ handleDelete }/>
+        { Object.keys(notes).map(id =>(
+            <div key={id}>
+              <NoteCard note={notes} handleDelete={ handleDelete } id ={id}/>
             </div>
           ))}
       </Masonry>
@@ -63,11 +61,3 @@ export default function Notes() {
     </Container>
   )
 }
-
-{/* <Grid container spacing={1}>
-        { notes.map(note =>(
-          <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={note.id}>
-            <NoteCard note={note} handleDelete={ handleDelete }/>
-          </Grid>
-        ))}
-      </Grid> */}

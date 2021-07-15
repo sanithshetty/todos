@@ -108,7 +108,6 @@ const Layout = ({ children }) => {
           onClose={handleClose}
         >
           <MenuItem onClick = { handleProfileClick }>My Profile</MenuItem>
-          <MenuItem >Logout</MenuItem>
         </Menu>
       );
 

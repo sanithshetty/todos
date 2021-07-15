@@ -31,7 +31,7 @@ const Update = () => {
     const [category, setCategory] = useState('money')
 
     useEffect(() =>{
-        fetch('http://localhost:8000/notes/' + id)
+        fetch(`https://firstproject-d29fe-default-rtdb.firebaseio.com/notes/${id}.json`)
         .then(res => res.json())
         .then(data =>{
             setNote(data);
@@ -52,7 +52,7 @@ const Update = () => {
         setDetailError(true)
         }
         if(title && details){
-        fetch('http://localhost:8000/notes/'+ id,{
+        fetch(`https://firstproject-d29fe-default-rtdb.firebaseio.com/notes/${id}.json`,{
             method: 'PUT',
             headers: { "Content-type":"application/json" },
             body: JSON.stringify({title, details, category})

@@ -12,24 +12,24 @@ const useStyles = makeStyles((theme) => ({
     
     avatar:{
         backgroundColor: (note) =>{
-            if(note.category == 'work'){
+            if(note.category === 'work'){
                 return yellow[700]
             }
-            if(note.category == 'money'){
+            if(note.category === 'money'){
                 return red[700]
             }
-            if(note.category == 'todos'){
+            if(note.category === 'todos'){
                 return green[500]
             }
-            if(note.category == 'reminders'){
+            if(note.category === 'reminders'){
                 return pink[500]
             }
         }
     }
 }))
 
-const NoteCard = ({note, handleDelete}) => {
-    const classes = useStyles(note)
+const NoteCard = ({note, handleDelete, id}) => {
+    const classes = useStyles(note[id])
     const history = useHistory()
     return ( 
         <div>
@@ -37,22 +37,22 @@ const NoteCard = ({note, handleDelete}) => {
                 <CardHeader
                     avatar = {
                         <Avatar className={classes.avatar}>
-                            {note.category[0].toUpperCase()}
+                            {note[id].category[0].toUpperCase()}
                         </Avatar>
                     }
                     action={
                         <Tooltip title="Delete">
-                            <IconButton onClick={() => handleDelete(note.id)}>
+                            <IconButton onClick={() => handleDelete(id)}>
                                 <DeleteOutlined />
                             </IconButton>
                         </Tooltip>
                     }
-                    title={note.title}
-                    subheader={note.category}
+                    title={note[id].title}
+                    subheader={note[id].category}
                 />
-                <CardContent onClick={() => history.push(`/update/${note.id}`)}>
+                <CardContent onClick={() => history.push(`/update/${id}`)}>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {note.details}
+                        {note[id].details}
                     </Typography>
                 </CardContent>
             </Card>

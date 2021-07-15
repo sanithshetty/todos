@@ -1,6 +1,5 @@
 import { Button, Card, CardContent, CardHeader, Divider, Grid, makeStyles, Typography } from "@material-ui/core"
 import { useHistory } from "react-router-dom";
-import { Paper } from "@material-ui/core";
 
 const useStyles = makeStyles({
     card:{
@@ -22,21 +21,6 @@ const Profile = () => {
                 />
                 <Divider />
                 <CardContent align="left">
-                    {/* <Typography variant="h6" color="textSecondary" component="p">
-                        Name : Sanith Shetty
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary" component="p">
-                        Email : sanithshetty143@gmail.com
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary" component="p">
-                        Mobile : 9632389738
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary" component="p">
-                        Password : 96323
-                    </Typography>
-                    <Button className={classes.button} variant="contained" color="secondary" onClick={() => history.push('/')}>
-                        Back
-                    </Button> */}
                     <Grid container >
                         <Grid item xs={3}>
                             <Typography variant="h6" color="textSecondary" component="p">

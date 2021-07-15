@@ -38,7 +38,7 @@ export default function Create() {
       setDetailError(true)
     }
     if(title && details){
-      fetch('http://localhost:8000/notes',{
+      fetch('https://firstproject-d29fe-default-rtdb.firebaseio.com/notes.json',{
         method: 'POST',
         headers: { "Content-type":"application/json" },
         body: JSON.stringify({title, details, category})
